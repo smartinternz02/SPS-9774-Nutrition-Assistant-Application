@@ -1,7 +1,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for, session
+from flask_talisman import Talisman
 from flask_mysqldb import MySQL
-from flask_cors import CORS
 import requests, json, os
 from ibm_watson import VisualRecognitionV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
@@ -12,7 +12,7 @@ import re
 
 
 app = Flask(__name__)
-CORS(app)
+Talisman(app)
 
 # Change this to your secret key (can be anything, it's for extra protection)
 app.secret_key = 'deek1234'
@@ -26,6 +26,7 @@ app.config['MYSQL_DB'] = '4of66GAB8K'
 
 # Intialize MySQL
 mysql = MySQL(app)
+
 
 @app.route('/')
 def home():
