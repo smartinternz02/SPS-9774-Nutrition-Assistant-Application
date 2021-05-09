@@ -1,6 +1,6 @@
-
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
+from flask_cors import CORS
 import requests, json, os
 from ibm_watson import VisualRecognitionV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
@@ -11,6 +11,7 @@ import re
 
 
 app = Flask(__name__)
+CORS(app)
 
 # Change this to your secret key (can be anything, it's for extra protection)
 app.secret_key = 'deek1234'
@@ -27,7 +28,7 @@ mysql = MySQL(app)
 
 @app.route('/')
 def home():
-   return render_template('home.html')
+    return render_template('home.html')
 
 # http://localhost:5000/pythonlogin/ - this will be the login page, we need to use both GET and POST requests
 @app.route('/pythonlogin/', methods=['GET', 'POST'])
