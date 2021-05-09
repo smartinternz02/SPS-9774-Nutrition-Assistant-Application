@@ -1,0 +1,4 @@
+flask
+requests
+flask_mysqldb
+ibm-watson>=5.1.0
